@@ -1,0 +1,57 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+    Your shopping cart
+{% endblock %}
+{% block content %} 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br> 
+    <form action="{% url 'orders:order_create' %}">
+        <center><button type="submit" class="btn-cart">Оформить заказ</button></center>
+    </form>
+    <div class="cart-container">
+        <table class="cart">
+            <thead>
+                <tr>
+                    <th class="titillium-web-black">Фото</th>
+                    <th class="titillium-web-black">Товар</th>
+                    <th class="titillium-web-black">Количество</th>
+                    <th class="titillium-web-black">Убрать</th>
+                    <th class="titillium-web-black">Цена за 1 шт.</th>
+                    <th class="titillium-web-black">Итого</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart %}
+                    {% with product=item.product %}
+                        <tr>
+                            <td>
+                                <a href="{{ product.get_absolute_url }}">
+                                    <img src="{{ product.image.url }}">
+                                </a>
+                            </td>
+                            <td class="titillium-web-black">{{ product.name }}</td>
+                            <td class="titillium-web-black">{{ item.quantity }}</td>
+                            <td class="titillium-web-black"><a href="{% url 'cart:cart_remove' product.id %}">Убрать</a></td>
+                            <td class="titillium-web-black">{{ item.price }} ₽</td>
+                            <td class="titillium-web-black">{{ item.total_price }} ₽</td>
+                        </tr>
+                    {% endwith %}
+                {% endfor %}
+                <tr class="total">
+                    <td class="titillium-web-bold" colspan="5">В сумме к оплате:</td>
+                    <td class="titillium-web-bold">{{ cart.get_total_price }} ₽</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

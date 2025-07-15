@@ -1,0 +1,51 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block content %}
+  <center>
+    <div class="titillium-web-semibold" style="font-size: 30px; margin-top: 195px; margin-bottom: 50px;">Результаты поиска</div>
+  </center>
+   <center><div id="main" class="product-list" style="margin-left: auto; margin-right: auto;">
+        <div class="product-grid">
+          {%if counter != 0 %}
+              {% for product in products %}
+              <div class="item" style="padding-bottom: 40px;">
+
+                  {% if product.available == True %}
+                  <a href="{{ product.get_absolute_url }}" class="product-link">
+                      <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" 
+                          alt="{{ product.name }}" 
+                          class="product-image"
+                          width="70%" height="70%">
+                  </a>
+                  <div class="text-center">
+                  
+                      <a href="{% url 'shop:product_list' %}{{ product.get_absolute_url }}" class="product-title">
+                          {{ product.name }}
+                      </a>
+                      <div class="product-price">
+                          {{ product.price }} ₽
+                      </div>
+                  </div>
+                  {% else %}
+                  <div class="image-container">
+                      <a>
+                          <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" 
+                              alt="{{ product.name }}" 
+                              class="product-image"
+                              width="70%" height="70%">
+                          <div class="sold-out-tag">Распроданный</div>
+                      </a>
+                      <div class="product-details text-center">
+                          <a class="product-title">{{ product.name }}</a>
+                          <div class="product-price">{{ product.price }} ₽</div>
+                      </div>
+                  </div>
+                  {% endif %}
+                </div>
+            {% endfor %}
+          {% else %}
+              <!-- <div class="titillium-web-semibold" style="font-size: 20px; margin-top: 30px; text-align: center;">Результаты поиска</div> -->
+          {% endif %}
+        </div>
+    </div></center>
+{% endblock %}

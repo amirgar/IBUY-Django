@@ -1,0 +1,42 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}Оформление заказа{% endblock %}
+
+{% block content %}
+    <main class="checkout-container">
+        <section class="order-summary">
+            <br>
+            <br>
+            <br>
+            <br>
+            <h2 class="titillium-web-bold">Ваш заказ</h2>
+            <ul class="order-items">
+                {% for item in cart %}
+                    <li class="item-row">
+                        <span class="titillium-web-regular">{{ item.quantity }}x {{ item.product.name }}</span>
+                        <span class="price titillium-web-regular">{{ item.total_price }} ₽</span>
+                    </li>
+                {% endfor %}
+            </ul>
+            <p class="total-price titillium-web-bold">Итого: {{ cart.get_total_price }} ₽</p>
+        </section>
+        </main>
+        <section class="form-section">
+            <h2 class="titillium-web-bold">Введите данные</h2>
+            <form action="." method="post" class="order-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    {% for field in form %}
+                        <div class="form-field">
+                            <label for="{{ field.id_for_label }}" class="titillium-web-semibold">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.errors %}
+                                <div class="error-message">{{ field.errors|join:", " }}</div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <button type="submit" class="btn-submit" style="font-size: 20px;">ЗАКАЗАТЬ</button>
+            </form>
+        </section>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>{% block title %}My shop{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css'%}"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <style>
+            a.white_txt { 
+                color: black;
+            }
+            a.white_txt:hover { 
+                color:white;
+            }
+        </style>
+    <script>
+      function submitForm() {
+        document.getElementById("search").submit();
+      }
+    </script>
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+          
+            {% with total_items=cart|length %}
+                <a href="{% url 'cart:cart_detail' %}">
+                    <img src="{% static 'img/basket.svg' %}" class="basket" height="50px" width="100px" style="position: absolute; top: 32%; left: 7%;" />
+                </a>
+                <a href="{% url 'about_us:about' %}" style="font-family: 'Tilda Sans', sans-serif; position: absolute; top: 39%; left: 18%; color: black; font-size: 25px; text-decoration: none;">Инфо</a>
+                <a href="{% url 'shop:product_list' %}" style="font-family: 'Tilda Sans', sans-serif; position: absolute; top: 39%; left: 28%; color: black; font-size: 25px; text-decoration: none;">Каталог </a>
+                 <a href="https://t.me/IBUYrussia" target="_blank" title="Написать в Telegram" rel="noopener noreferrer"><div class="telegram-button"><i class="fa fa-telegram"></i></div></a>
+            {% endwith %}
+            <center> 
+                <img src="{% static 'img/logo.png' %}" width="170" height="170">
+            </center> 
+              <!-- <form id="search" action="{% url 'shop:search_results' %}" method="get">
+                <input name="q" type="text" placeholder="Search..."> 
+                <i aria-hidden="true"></i>
+              </form>-->
+              <form id="search" method="get" action="{% url 'shop:search_results' %}">
+                <div class="search-box" style="position: absolute; left: 78.5%; top: 30%;">
+                    <input type="text" name="q" class="search-txt" placeholder="Найти товар"/>
+                    <a class="search-btn" onclick=submitForm()>
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    </a>
+                </div>
+                </form>
+        </div>
+    </nav>
+    <div>
+        <br>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body> 
+</html>
