@@ -1,0 +1,47 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+    {% if category %}{{ category.name }}{% else %}Products{% endif %}
+{% endblock %}
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <br>
+    <br>
+    <center><div id="main" style="margin-left: auto; margin-right: auto;">
+        <div class="product-grid" style="position: absolute; top: 300px;">
+            {% for product in cart %}
+            <div class="item" style="padding-bottom: 20px;">
+                <a href="{{ product.url }}">
+                    <img src="{% if product.image %}{{ product.image.url }}{% endif %}" 
+                        alt="{{ product.name }}" 
+                        class="product-image"
+                        width="70%" height="70%" style="max-width: 500px; max-height: 700px;">
+                </a>
+                <div class="text-center">
+                    <a href="{{ product.url }}" style="padding-top: 50%;" class="product-title">
+                        {{ product.name }}
+                    </a>
+                    
+                    <div class="product-price">
+                        {{ product.price }} ₽
+                    </div>
+                    <a href="{% url "cart:cart_remove" product.id%}" style="padding-top: 50%;" class="product-title">
+                        Удалить из корзины
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div></center>
+    <br>
+    <br>    
+    <form action="{% url 'orders:order_create' %}">
+        <center><button type="submit" class="btn-cart">Оформить заказ</button></center>
+    </form>
+{% endblock %}

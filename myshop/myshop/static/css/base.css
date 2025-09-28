@@ -1,0 +1,1097 @@
+/* Menu */
+
+.telegram-button {
+    position: fixed;
+    right: 13px;
+    bottom: 10px;
+    transform: translate(-50%, -50%);
+    background: #afddd0;; /*цвет кнопки*/
+    border-radius: 50%;
+    width: 55px; /*ширина кнопки*/
+    height: 55px; /*высота кнопки*/
+    color: #fff;
+    text-align: center;
+    line-height: 53px; /*центровка иконки в кнопке*/
+    font-size: 35px; /*размер иконки*/
+    z-index: 9999;
+}
+.telegram-button a {
+    color: #fff;
+}
+.telegram-button:before,
+.telegram-button:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    border: 50%;
+    border: 1px solid #000000; /*цвет анимированных волн от кнопки*/
+    left: -20px;
+    right: -20px;
+    top: -20px;
+    bottom: -20px;
+    border-radius: 50%;
+    animation: animate 1.5s linear infinite;
+    opacity: 0;
+    backface-visibility: hidden; 
+}
+ 
+.telegram-button:after{
+    animation-delay: .5s;
+}
+ 
+@media screen {
+   .telegram-button 
+}
+@keyframes animate
+{
+    0%
+    {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    50%
+    {
+        opacity: 1;
+    }
+    100%
+    {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
+
+
+.container {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.bar1 {
+    width: 40px;
+    height: 4px;
+    background-color: #000;
+    transition: 0.1s;
+    position: absolute;
+    top: 45%;
+    left: 10%;
+    border-radius: 60px;
+}
+
+.bar2 {
+    width: 40px;
+    height: 4px;
+    background-color: #000;
+    transition: 0.1s;
+    position: absolute;
+    top: 49%;
+    left: 10%;
+    border-radius: 60px;
+}
+
+.bar3 {
+    width: 40px;
+    height: 4px;
+    background-color: #000;
+    transition: 0.1s;
+    position: absolute;
+    top: 53%;
+    left: 10%;
+    border-radius: 60px;
+}
+
+.search-box {
+    background: #F5F5F5;
+    height: 40px;
+    border-radius: 40px;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translateX(-50%); /* Сдвигаем на половину ширины */
+    width: 300px; /* Увеличенная ширина */
+    display: flex; /* Используем Flexbox */
+    align-items: center;
+    border: none; /* Убраны лишние границы */
+}
+
+/* Поле ввода */
+.search-txt {
+    flex: 1; /* Занимает всю доступную ширину */
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0 10px;
+    color: black;
+    font-size: 16px;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+/* Кнопка поиска */
+.search-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    color: white;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background: #333;
+}
+
+.search-btn i {
+    font-size: 20px;
+}
+/*Side checkbox*/
+#side-checkbox {
+    z-index: 1;
+}
+
+.side-panel {
+    position: fixed;
+    z-index: 999999;
+    top: 0;
+    left: -360px;
+    background: #afddd0;
+    transition: all 0.15s;
+    width: 320px;
+    height: 100vh;
+    color: black;
+    padding: 40px 20px;
+}
+
+.side-title {
+    font-size: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #BFE2FF;
+}
+
+#side-checkbox:checked+.side-panel {
+    left: 0;
+}
+
+.side-button-2 {
+    font-size: 100px;
+    border-radius: 60px;
+    position: absolute;
+    z-index: 1;
+    top: 10%;
+    left: 10%;
+    cursor: pointer;
+    transform: rotate(45deg);
+    color: black;
+    transition: all 0.1s ease-in-out;
+}
+
+.side-button-2:hover {
+    transform: rotate(45deg) scale(1.1);
+    color: #FFF;
+}
+
+/* Font */
+.titillium-web-extralight {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.titillium-web-light {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.titillium-web-regular {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.titillium-web-semibold {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.titillium-web-bold {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.titillium-web-black {
+    font-family: "Titillium Web", sans-serif;
+    /* font-weight: 900; */
+    font-style: normal;
+}
+
+.titillium-web-extralight-italic {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 200;
+    font-style: italic;
+}
+
+.titillium-web-light-italic {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.titillium-web-regular-italic {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.titillium-web-semibold-italic {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.titillium-web-bold-italic {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.homepage_menu {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 900;
+    font-size: 30px;
+    font-style: normal;
+}
+
+.account_menu {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+    font-style: normal;
+    position: absolute;
+    top: 40%;
+    left: 10%;
+}
+
+.products_menu {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+    font-style: normal;
+    position: absolute;
+    top: 47%;
+    left: 10%;
+}
+
+.about_us_menu {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+    font-style: normal;
+    position: absolute;
+    top: 54%;
+    left: 10%;
+}
+
+.contacts_menu {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+    font-style: normal;
+    position: absolute;
+    top: 61%;
+    left: 10%;
+}
+
+.image-with-text {
+  display: flex;
+  align-items: center; 
+  position: absolute; 
+  left: 20%;
+}
+
+.image-with-text p { 
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 800;
+    font-size: 40px;
+    font-style: italic; 
+}
+
+.image-with-text img {
+  margin-left: 20%; /* adjust as needed */
+}
+
+.cart { 
+    position: absolute;
+    top:340px;
+    left: 10%;
+    z-index: -10000;
+}
+
+.navigation-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  fill: #000000;
+}
+
+.basket { 
+    position: absolute; 
+    left: "9%"; 
+    top: "34%"
+}
+
+.basket:hover { 
+  transform: scale(1.1);
+}
+
+.product_detail { 
+    position: absolute; 
+    top: 40%; 
+    left: 50%;
+}
+
+form{
+  display: block;
+  width: 100%;
+}
+
+.btn-new {
+    text-align: center;
+    transition: 0.5s;
+    width: 200px; 
+    height: 80px;
+    background-size: 200% auto;
+    color: black;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    font-size: 30px;
+    background-image: linear-gradient(to right, #f2f5f4 0%, #d7f7ee 51%, #d2d4d3 100%);
+}
+
+.btn-new:hover {
+     background-position: right center;
+}
+
+ #carousel {
+      position: relative;
+      height: 326px;
+      width: 400px;
+      overflow: hidden;
+    }
+    #carousel *{
+      box-sizing: border-box ;
+      margin: 0;
+      padding: 0;
+    }
+    #carousel li {
+      position: absolute;
+      left: 0;
+      list-style-type: none;
+    }
+    #carousel .next,
+    #carousel .previous{
+      display: block;
+      position: absolute;
+      top: 0;
+      color: transparent;
+      /* border: 1px solid #fff; */
+      width: 100px;
+      height: 100%;
+      line-height: 326px;
+      text-align: center;
+    }
+    #carousel .next{
+      right: 0
+    }
+    #carousel .next span,
+    #carousel .previous span{
+      border-top: 5px solid #fff;
+      border-left: 5px solid #fff;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 40%;
+      transform: rotate(-45deg)
+    }
+    #carousel .next span{
+      transform: rotate(135deg);
+      left: 20px
+    }
+    #carousel .next:hover,
+    #carousel .previous:hover{
+      background: rgba(0,0,0,.2);
+    }
+
+.order-info {
+    position: relative;
+    top: 200px;
+    z-index: -10000;
+    width: 100%;
+}
+
+.order-form {
+    padding: 20px;
+    z-index: -10000; 
+    font: "Titillium Web", sans-serif;
+    font-weight: 400;
+    align-items: center;
+    font-style: normal;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(280px, 1fr)); /* Адаптивная сетка */
+
+    /* z-index: -1000000; */
+}
+
+
+.item {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.product-image {
+    width: 60%; /* Расширяем изображение на всю ширину контейнера */
+    height: auto;
+    display: block;
+    border-radius: 30px; /* Закругляем углы */
+    object-fit: cover; /* Сохраняем пропорции изображения */
+}
+
+
+
+/* Стили для мобильных устройств */
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: 1fr; /* Один элемент в строку на маленьких экранах */
+    }
+}
+.product-title {
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    text-decoration: none; 
+    color: black;
+    padding-bottom: 10px;
+}
+
+.product-price {
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 400; /* Обычный вес */
+    font-size: 20px;
+    color: #2c3e50;
+    text-decoration: none;  
+}
+
+/* Импорт шрифта */
+@import url('https://fonts.googleapis.com/css2?family=Tilda+Sans&display=swap');
+
+.centered-category-block {
+    display: flex;
+    justify-content: center; /* Горизонтальное центрирование */
+    padding: 20px;
+    z-index: -1000000;
+}
+
+.category-links {
+    display: flex;
+    gap: 20px; /* Расстояние между ссылками */
+    font-family: 'Tilda Sans', sans-serif; /* Шрифт */
+    color: #000; /* Черный цвет текста */
+    text-decoration: none; /* Убираем подчеркивание */
+    flex-wrap: wrap; /* Адаптивность на маленьких экранах */
+}
+
+.category-links a {
+    color: #000; /* Черный цвет текста */
+    text-decoration: none; /* Убираем подчеркивание */
+    font-size: 18px; /* Размер шрифта */
+    transition: opacity 0.3s ease; /* Плавность при наведении */
+}
+
+.category-links a:hover {
+    opacity: 0.8; /* Эффект при наведении */
+}
+
+@media (max-width: 600px) {
+    .category-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+menu-toggle {
+    display: none; /* Скрыто на десктопах */
+}
+
+.side-panel {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100vh;
+    background-color: #afddd0;
+    transition: left 0.3s ease;
+    z-index: 9999;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+.menu-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 20px;
+}
+
+.menu-item {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 900;
+    font-size: 24px; /* Уменьшен размер для мобильных */
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.menu-item:hover {
+    color: #000000cc;
+}
+
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Показываем гамбургер на мобилках */
+    }
+
+    .side-panel {
+        left: -300px;
+    }
+
+    .side-panel input[type="checkbox"]:checked ~ .side-panel {
+        left: 0;
+    }
+
+    .hamburger-menu {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        z-index: 99999;
+    }
+
+    .bar1, .bar2, .bar3 {
+        background-color: #000;
+    }
+
+    .cart-link {
+        position: absolute;
+        top: 30px;
+        left: 20px;
+    }
+
+    .logo {
+        display: none; /* Скрываем логотип на маленьких экранах */
+    }
+}
+
+.btn-add-to-cart {
+    background-color: #ffffff; /* Белый фон */
+    border: 2px solid #000000; /* Черная граница */
+    color: #000000; /* Черный текст */
+    padding: 16px 32px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.btn-add-to-cart:hover {
+    background-color: #f0f0f0; /* Светло-серый при наведении */
+    border-color: #333333; /* Темнее черной границы */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.tilda-sans { 
+    font-family: 'Tilda Sans', sans-serif; 
+}
+
+.image-text-container {
+  position: relative;
+  display: inline-block;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 24px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+/* Контейнер изображения */
+.image-container {
+    position: relative; /* Включает контекст позиционирования */
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Метка "Распроданный" */
+.sold-out-tag {
+    position: absolute;
+    bottom: 58px; /* Расположение снизу */
+    left: 160px;
+    right: 160px;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-family: 'Tilda Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 1; /* Гарантирует отображение поверх изображения */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    max-width: 80%; /* Ограничиваем ширину текста */
+    text-align: center;
+}
+
+/* Адаптивность для маленьких экранов */
+@media (max-width: 768px) {
+    .sold-out-tag {
+        font-size: 12px;
+        padding: 6px 12px;
+        bottom: 5px;
+    }
+}
+
+/* 
+@media (max-width: 768px) {
+    .sold-out-tag {
+        font-size: 12px;
+        padding: 6px 12px;
+        top: 80%;
+        left: 48%;
+    }
+}
+
+@media (max-width: 480px) {
+    .sold-out-tag {
+        font-size: 10px;
+        padding: 4px 8px;
+        top: 95%;
+        left: 46%;
+    }
+} */
+
+/* Общий контейнер для корзины */
+.cart-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-x: auto;
+    padding-bottom: 60px; /* Уже добавлено */
+}
+/* Стили таблицы */
+.cart {
+    padding-top: 0pxs;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #000;
+    left: 0px;
+        margin-bottom: 60px; /* Увеличенный отступ */
+
+}
+
+/* Заголовки таблицы */
+.cart th,
+.cart td {
+    border: 1px solid #000;
+    padding: 12px 20px;
+    text-align: center;
+}
+
+/* Акцент на заголовках */
+.cart th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+/* Итоговая строка */
+.cart .total {
+    font-weight: bold;
+    background-color: #e9f5eb;
+    border-top: 2px solid #000;
+}
+
+/* Изображение товара */
+.cart img {
+    max-width: 70%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 4px;
+}
+
+/* Кнопка оформления */
+.checkout-button {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Стили для кнопки оформления */
+.checkout-button {
+    text-align: center;
+    margin-top: 30px; /* Расстояние от таблицы до кнопки */
+}
+
+/* Стили для кнопки оформления */
+.checkout-button {
+    text-align: center;
+    margin-top: 30px;
+    position: relative;
+    /* z-index: 1; */
+}
+
+.btn-new {
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    color: #000000;
+    padding: 16px 32px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: inline-block;
+    text-decoration: none;
+    position: relative; /* Относительное позиционирование */
+    top: 700px;
+}
+
+.btn-new:hover {
+    background-color: #f0f0f0;
+    border-color: #333333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .btn-new {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+
+    .checkout-button {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-new {
+        width: 100%;
+        padding: 12px 0;
+        font-size: 14px;
+    }
+}
+
+.cart-title {
+    font-family: 'Tilda Sans', sans-serif; /* Шрифт */
+    font-weight: 700; /* Жирный шрифт */
+    font-size: 32px; /* Размер шрифта */
+    color: #000; /* Цвет текста */
+    margin-top: 210px; /* Отступ сверху */
+    margin-bottom: 80px;
+    text-align: center;
+    
+}
+
+.btn-new:hover {
+    background-color: #f0f0f0;
+    border-color: #333333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (orientation: vertiacal) {}
+    .cart th,
+    .cart td {
+        font-size: 20px;
+        padding: 8px 10px;
+    }
+
+    .cart img {
+        width: 80%;
+        height: 80%;
+    }
+
+    .checkout-button .btn-new {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+
+/* Добавьте отступ к контейнеру */
+.btn-cart {
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    color: #000000;
+    padding: 16px 32px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: inline-block;
+}
+
+.btn-cart:hover {
+    background-color: #f0f0f0;
+    border-color: #333333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .checkout-form {
+        margin-top: 30px;
+    }
+
+    .btn-cart {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-cart {
+        width: 100%;
+        padding: 12px 0;
+        font-size: 14px;
+    }
+}
+
+/* Контейнер для страницы успешного заказа */
+.order-success-container {
+    text-align: center;
+    max-width: 600px;
+    margin: 80px auto 40px;
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* Иконка успеха */
+.success-icon {
+    font-size: 60px;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+/* Заголовок */
+.titillium-web-semibold {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Текст */
+.titillium-web-regular {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Кнопка возврата */
+.back-homepage {
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    color: #000000;
+    font-size: 25px;
+    font-weight: 400;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: "Titillium Web", sans-serif;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-decoration: none;
+    position: relative;
+    width: 60%;
+    height: auto;
+    top: 25px;
+}
+
+.back-homepage:hover {
+    background-color: #f0f0f0;
+    border-color: #333333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    .order-success-container {
+        margin: 40px 20px;
+    }
+
+    .success-icon {
+        font-size: 40px;
+    }
+
+    .titillium-web-semibold {
+        font-size: 28px;
+    }
+
+    .titillium-web-regular {
+        font-size: 16px;
+    }
+
+    .btn-new {
+        width: 100%;
+        padding: 12px 0;
+        font-size: 16px;
+    }
+}
+
+
+/* Общий контейнер */
+.checkout-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирует по горизонтали */
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+/* Карточка заказа */
+.order-summary {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    margin: auto auto;
+    box-align: center;
+}
+
+.order-summary h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.order-items {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.total-price {
+    font-size: 20px;
+    color: #2c3e50;
+}
+
+/* Форма */
+.form-section {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    text-align: center;
+}
+
+.form-section h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+    max-width: 600px; /* Ограничиваем ширину */
+    margin: 0 0; /* Центрируем блок */
+    place-items: center;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
+    margin: 0 auto;
+    position: relative;
+    place-items: center;
+}
+
+.form-field label {
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #333;
+}
+
+.form-field input,
+.form-field textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+    border-color: #afddd0;
+    outline: none;
+}
+
+.error-message {
+    color: #d9534f;
+    font-size: 14px;
+    margin-top: 4px;
+}

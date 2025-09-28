@@ -1,0 +1,142 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block content %}
+    <head>
+        <style>
+            /* Основной контейнер слайдера */
+            /* Основной контейнер слайдера */
+            .slider {
+                width: 350px; /* Фиксированная ширина слайдера */
+                height: 500px;
+                overflow: hidden; /* Обрезаем всё, что выходит за границы контейнера */
+                position: absolute; /* Необходимо для правильного позиционирования кнопок */
+                top: 210px;
+                left: 17.5%;
+            }
+
+            /* Контейнер всех слайдов */
+            .slides {
+                display: flex; /* Размещаем слайды в одну линию */
+                transition: transform 0.5s ease-in-out; /* Анимация плавного смещения */
+            }
+
+            /* Каждый отдельный слайд */
+            .slide {
+                width: 100%; /* Занимает всю ширину контейнера */
+                flex-shrink: 0; /* Запрещаем уменьшение размера слайдов */
+            }
+
+            /* Стили для изображений */
+            .slide img {
+                width: 100%; /* Картинки растягиваются на весь слайд */
+                display: block; /* Убираем пробелы вокруг изображений */
+            }
+
+            /* Кнопки «Назад» и «Вперёд» */
+            .prev, .next {
+                position: absolute; /* Позволяет располагать кнопки поверх слайдов */
+                top: 240px; /* Размещаем по вертикали по центру */
+                transform: translateY(-50%); /* Сдвигаем кнопки вверх на половину их высоты */
+                background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон кнопок */
+                color: white; /* Белый цвет текста */
+                border: none; /* Убираем границы */
+                padding: 10px; /* Отступы внутри кнопки */
+                cursor: pointer; /* Изменяем курсор на указатель */
+                font-size: 18px; /* Размер шрифта */
+                font-weight: bold; /* Делаем текст жирным */
+                z-index: 2; /* Размещаем кнопки выше всех элементов */
+            }
+
+            /* Позиционируем кнопку «Назад» слева */
+            .prev {
+                left: 10px;
+            }
+
+            /* Позиционируем кнопку «Вперёд» справа */
+            .next {
+                right: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="slider">
+            <!-- Контейнер, который содержит все слайды -->
+            <div class="slides">
+                {% if product.image %}
+                    <div class="slide"><img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}"></div>
+                {% endif %}
+                {% if product.image2 %}
+                    <div class="slide"><img src="{% if product.image2 %}{{ product.image2.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}"></div>
+                {% endif %}
+                {% if product.image3 %}
+                    <div class="slide"><img src="{% if product.image3 %}{{ product.image3.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}"></div>
+                {% endif %}
+                {% if product.image4 %}
+                    <div class="slide"><img src="{% if product.image4 %}{{ product.image4.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}"></div>
+                {% endif %}
+            </div>
+        
+            <!-- Кнопки управления слайдером -->
+            <button class="prev">&#10094;</button> <!-- Кнопка «Назад» -->
+            <button class="next">&#10095;</button> <!-- Кнопка «Вперёд» -->
+        </div>
+        <div style="position: absolute; left: 61%; top: 327px; z-index: -100;">
+                    <div style="font-size: 40px; font-weight: 1000; font-family: 'satoshi', sans-serif;">{{ product.name }}</div>
+                    <div style="text-decoration: none; font-style: bold; font-size: 30px; font-family: 'Tilda', sans-serif;"><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></div>
+                    <p style="text-decoration: none; font-style: bold; font-weight: 700; font-size: 30px; font-family: 'satoshi', sans-serif;">{{ product.get_price }} ₽</p>
+                    <form action="{% url "cart:cart_add" product.id %}" method="post">
+                        {% csrf_token %}
+                        <button style="font-family: tilda;" type="submit" class="btn-add-to-cart">В корзину</button>
+                    </form>
+                </div>
+            <div style="
+                text-decoration: none; 
+                font-size: 30px; 
+                font-family: 'Tilda', sans-serif; 
+                position: absolute; 
+                top: 700px; 
+                padding-left: 113.5%; 
+                transform: translateX(-50%); 
+                width: 80%;"> {{ product.description|linebreaks }}</div>
+            </div>
+        <script>
+            // Находим контейнер со слайдами
+            const slides = document.querySelector('.slides');
+
+            // Определяем количество слайдов
+            const slideCount = document.querySelectorAll('.slide').length;
+
+            // Находим кнопки «Назад» и «Вперёд»
+            const prevButton = document.querySelector('.prev');
+            const nextButton = document.querySelector('.next');
+
+            let currentIndex = 0; // Переменная для хранения текущего слайда
+
+            // Функция смены слайдов
+            function goToSlide(index) {
+                if (index < 0) {
+                    index = slideCount - 1; // Если нажали «Назад» на первом слайде, переходим на последний
+                } else if (index >= slideCount) {
+                    index = 0; // Если нажали «Вперёд» на последнем слайде, переходим на первый
+                }
+
+                currentIndex = index; // Запоминаем текущий слайд
+                slides.style.transform = `translateX(${-index * 100}%)`; // Сдвигаем контейнер со слайдами
+            }
+
+            // Добавляем обработчик клика для кнопки «Назад»
+            prevButton.addEventListener('click', () => {
+                goToSlide(currentIndex - 1);
+            });
+
+            // Добавляем обработчик клика для кнопки «Вперёд»
+            nextButton.addEventListener('click', () => {
+                goToSlide(currentIndex + 1);
+            });
+
+            // Устанавливаем первый активный слайд при загрузке страницы
+            goToSlide(0);
+        </script>
+    </body>
+    </html>
+{% endblock %}

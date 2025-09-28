@@ -1,0 +1,50 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}IBUY{% endblock %}
+
+{% block content %}
+    <main class="checkout-container">
+        <section class="order-summary">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <center><h2 class="titillium-web-bold">Ваш заказ</h2></center>
+            <ul class="order-items">
+                {% for item in cart %}
+                    <li class="item-row">
+                        <span style="font-family: Tilda;" class="titillium-web-regular">{{ item.product.name }}</span>
+                        <span style="font-family: Tilda;" class="price titillium-web-regular">{{ item.total_price }} ₽</span>
+                    </li>
+                {% endfor %}
+            </ul>
+            <center><p class="total-price titillium-web-bold">Итого: {{ cart.get_total_price }} ₽</p></center>
+        </section>
+
+                <section class="form-section">
+            <form action="." method="post" class="order-form">
+                <center>
+                {% csrf_token %}
+                <div class="form-group">
+                    {% for field in form %}
+                        <div class="form-field">
+                            <label for="{{ field.id_for_label }}" class="titillium-web-semibold">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.errors %}
+                                <div class="error-message">{{ field.errors|join:", " }}</div>
+                            {% endif %}
+                        </div>
+                        
+                    {% endfor %}
+                </div>
+                </center>
+                <button type="submit" class="btn-cart" style="font-family: Tilda; font-size: 20px; margin-top: 25px;">ЗАКАЗАТЬ</button>
+            </form>
+        </section>  
+        </main>
+{% endblock %}
